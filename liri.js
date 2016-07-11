@@ -3,10 +3,10 @@ var Twitter = require('twitter');
 var request = require('request');
 
 var client = new Twitter({
-consumer_key: 'RSpNsiTwXfDI4MCdJJQAbcPdk',
-consumer_secret: 'beKRPhk1mJWDICPo7w7a4CM7nJf8IS558Cj9roTxtcgbDkdhRl',
-access_token_key: '612061683-fbQhPaUt4Ge2YMEZTmng8p7RePZy6WgONBPNJxD2',
-access_token_secret: 'oLAG1ChPlj4pDmCdqul0RwmgIIp4Ew7pLtWDXjKRiT9Zn'
+	consumer_key: keys.consumer_key,
+	consumer_secret: keys.consumer_secret,
+	access_token_key: keys.access_token_key,
+	access_token_secret: keys.access_token_secret
 });
 
 // var params = {screen_name: 'nodejs'};
@@ -15,11 +15,11 @@ access_token_secret: 'oLAG1ChPlj4pDmCdqul0RwmgIIp4Ew7pLtWDXjKRiT9Zn'
 //     console.log(tweets);
 //   }
 // });
-client.post('statuses/update', {status: 'I am a tweet'}, function(error, tweet, response) {
-  if (!error) {
-    console.log(tweet);
-  };
- });
+// client.post('statuses/update', {status: 'I am a tweet'}, function(error, tweet, response) {
+//   if (!error) {
+//     console.log(tweet);
+//   };
+//  });
 // client.get('search/tweets', {q: 'node.js'}, function(error, tweets, response) {
 //   console.log(tweets);
 // });
