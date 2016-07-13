@@ -1,6 +1,7 @@
 var keys = require("./keys.js");
 var Twitter = require('twitter');
 var request = require('request');
+var inquirer = require('inquirer');
 var SpotifyWebApi = require('spotify-web-api-node');
 var omdb = require('omdb');
 
@@ -11,50 +12,89 @@ var client = new Twitter({
 	access_token_secret: keys.twitterKeys.access_token_secret
 });
 
-// Takes in all of the command line arguments
-var inputString = process.argv;
-var runProgram = inputString[2];
+// Here we give the user a list to choose from.
+// Create a "Prompt" with a series of questions.
+inquirer.prompt([
+	{
+		type: "list",
+		message: "Do you want to Tweet or get tweets?",
+		choices: ["my-tweets", "tweet"],
+		name: "tweets"
+	}
+	
+]).then(function (user) {
+	if (user.tweets == 'my-tweets'){
+		console.log(user.tweets);
+		var runProgram = user.tweets;
+		console.log(runProgram);
+		if (runProgram == "my-tweets"){
+			var value 	=  'nodejs';	
+			var params = {screen_name: ' + value + '};
+			client.get('statuses/user_timeline', params, function(error, tweets, response){
+				if (!error) {
+				console.log(tweets);
+				}
+			});
+		}
+	} else {
+		inquirer.prompt([
+			{
+				type: "input",
+				message: "Enter your twitter message?",
+				name: "message"
+			}
+		
+		]).then(function (user) {
+			var value = user.message || 'Have a wonderful day!!';	
+			client.post('statuses/update',{ status:value}, function(error, tweet, response) {
+				if (!error) {
+				console.log(tweet);
+				}
+			});
+		})
+	}
 
+// } else if (runProgram == "spotify-this-song") {
+// 	var value 	= inputString[3] || 'Love';	
+// 	var spotifyApi = new SpotifyWebApi();
 
-if (runProgram == "my-tweets"){
-	var value 	= inputString[3] || 'nodejs';	
-	var params = {screen_name: ' + value + '};
-	client.get('statuses/user_timeline', params, function(error, tweets, response){
-	  if (!error) {
-	    console.log(tweets);
-	   // $("#output").html(tweets);
-	  }
-	});
-} else if (runProgram == "spotify-this-song") {
-	var value 	= inputString[3] || 'Love';	
-	var spotifyApi = new SpotifyWebApi();
-
-	// Search tracks whose name, album or artist contains 'Love'
-	spotifyApi.searchTracks(' + value +')
-	.then(function(data) {
-		console.log('Search by " ' + value + '"', data.body);
-	}, function(err) {
-		console.error(err);
-	});
-} else if (runProgram == "movie-this"){
-	var value 	= inputString[3] || 'Forrest Gump';	
-	console.log (value);
+// 	// Search tracks whose name, album or artist contains 'Love'
+// 	spotifyApi.searchTracks(' + value +')
+// 	.then(function(data) {
+// 		console.log('Search by " ' + value + '"', data.body);
+// 	}, function(err) {
+// 		console.error(err);
+// 	});
+// } else if (runProgram == "movie-this"){
+// 	var value 	= inputString[3] || 'Forrest Gump';	
+// 	console.log (value);
 
 	
  
-	omdb.get({ title: ' Forrest Gump ', year: 1994 }, true, function(err, movie) {
-	    if(err) {
-	        return console.error(err);
-	    }
+// 	omdb.get({ title: ' Forrest Gump ', year: 1994 }, true, function(err, movie) {
+// 	    if(err) {
+// 	        return console.error(err);
+// 	    }
 	 
-	    if(!movie) {
-	        return console.log('Movie not found!');
-	    }
+// 	    if(!movie) {
+// 	        return console.log('Movie not found!');
+// 	    }
 	 
-	    console.log('%s (%d) %d/10', movie.title, movie.year, movie.imdb.rating);
-	    console.log(movie.plot);
-	});
-};
+// 	    console.log('%s (%d) %d/10', movie.title, movie.year, movie.imdb.rating);
+// 	    console.log(movie.plot);
+// 	});
+// };
+
+// 	};
+
+});
+
+// Takes in all of the command line arguments
+//var inputString = process.argv;
+//var runProgram = inputString[2];
+
+
+
 //=== key values
 	//consumer_key: 'RSpNsiTwXfDI4MCdJJQAbcPdk',
 // consumer_secret: 'beKRPhk1mJWDICPo7w7a4CM7nJf8IS558Cj9roTxtcgbDkdhRl',
