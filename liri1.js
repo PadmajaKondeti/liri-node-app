@@ -29,12 +29,14 @@ inquirer.prompt([
 		console.log(runProgram);
 		if (runProgram == "my-tweets"){
 			var value 	=  'nodejs';	
-			var params = {screen_name: ' + value + '};
-			client.get('statuses/user_timeline', params, function(error, tweets, response){
-				if (!error) {
-				console.log(tweets);
-				}
-			});
+			//var params = {screen_name: ' + value + '};
+			for (var i = 0; i < 2; i++){
+				client.get('statuses/user_timeline', function(error, tweets, response){
+					if (!error) {
+						console.log(tweets);
+					}					
+				});
+			}
 		}
 	} else {
 		inquirer.prompt([
@@ -53,6 +55,10 @@ inquirer.prompt([
 			});
 		})
 	}
+
+
+});
+
 
 // } else if (runProgram == "spotify-this-song") {
 // 	var value 	= inputString[3] || 'Love';	
@@ -86,8 +92,6 @@ inquirer.prompt([
 // };
 
 // 	};
-
-});
 
 // Takes in all of the command line arguments
 //var inputString = process.argv;
