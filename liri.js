@@ -4,6 +4,7 @@ var request = require('request');
 var inquirer = require('inquirer');
 var SpotifyWebApi = require('spotify-web-api-node');
 var omdb = require('rcb-omdb');
+var omdb = require('omdb');
 var spotify = require('spotify');
 
 var client = new Twitter({
@@ -102,6 +103,5 @@ inquirer.prompt([
 
 			});
 		})
-
 	}
 });
