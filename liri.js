@@ -3,7 +3,7 @@ var Twitter = require('twitter');
 var request = require('request');
 var inquirer = require('inquirer');
 var SpotifyWebApi = require('spotify-web-api-node');
-var omdb = require('omdb');
+var omdb = require('rcb-omdb');
 var spotify = require('spotify');
 
 var client = new Twitter({
@@ -60,7 +60,7 @@ inquirer.prompt([
 		inquirer.prompt([
 			{
 				type: "input",
-				message: "Please enter the song?",
+				message: "Please enter the song name?",
 				name: "spotify"
 			 }
 		]).then(function (user) {
@@ -75,6 +75,33 @@ inquirer.prompt([
 				}
 			});	
 		})
-		
+	} else if (user.choice == 'movie-this' ){
+		inquirer.prompt([
+			{
+				type: "input",
+				message: "Please enter the movie name?",
+				name: "movie"
+			 }
+		]).then(function (user) {
+			var movieQuery = user.movie || 'Forrest Gump';
+			omdb.get({ title: movieQuery }, true, function(err, movie) {
+			    if(err) {
+			        return console.error(err);
+			    }
+			 
+			    if(!movie) {
+			        return console.log('Movie not found!');
+			    }
+			 
+			    console.log('%s (%d) %d/10', movie.title, movie.year, movie.imdb.rating);
+			    console.log('country - ' + movie.country);
+			    console.log('Language - ' + movie.language);
+			    console.log('plot - ' + movie.plot);
+			    console.log('Actors - ' + movie.actors);
+			    console.log('Rotten Tomatoes Rating - ' + movie.tomatoes);
+
+			});
+		})
+
 	}
 });
