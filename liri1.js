@@ -3,6 +3,7 @@ var Twitter = require('twitter');
 var request = require('request');
 var inquirer = require('inquirer');
 var SpotifyWebApi = require('spotify-web-api-node');
+var spotify = require('spotify');
 var omdb = require('omdb');
 
 var client = new Twitter({
