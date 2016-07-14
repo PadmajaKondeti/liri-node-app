@@ -67,7 +67,7 @@ inquirer.prompt([
 			var spotifyQuery = user.spotify || 'dancing in the moonlight';
 			spotify.search({ type: 'track', query: spotifyQuery }, function(err, data) {
 				if ( !err ) {
-					// Do something with 'data' 
+					// Do something with 'data'
 					console.log("Artist(s)- "  + data.tracks.items[0]['artists'][0]['name']);
 					console.log("Song Name - "  + data.tracks.items[0].name);
 					console.log("Preview link -  "  + data.tracks.items[0].preview_url);
