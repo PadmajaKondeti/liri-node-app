@@ -24,7 +24,7 @@ var logInfoFunction = function(info){
 	var addtext = '\n' + info + '\n';
 	fs.appendFile('log.txt', addtext, (err) => {
 		if (err) throw err;
-		console.log('The "data is append" was appended to file!');
+		console.log('The data is append to the file!');
 	});
 };
 
@@ -127,7 +127,7 @@ var movieFunction= function(){
 		 }
 	]).then(function (user) {
 		var movieQuery = user.movie || 'Mr. Nobody ';
-		omdb.get({ title: movieQuery, options: "tomato:true"}, true, function(err, movie) {
+		omdb.get({ title: movieQuery,  tomatoes:true}, true, function(err, movie) {
 			if(err) {
 		        return console.error(err);
 		    }		 
@@ -139,6 +139,7 @@ var movieFunction= function(){
 		    logInfo +=  'plot - ' + movie.plot;
 		    logInfo += 'Actors - ' + movie.actors;
 			logInfoFunction(logInfo);
+			
 		    console.log('Movie info - %s (%d) %d/10', movie.title, movie.year, movie.imdb.rating);
 		    console.log('country - ' + movie.countries);
 		    console.log('Language - ' + movie.language);
