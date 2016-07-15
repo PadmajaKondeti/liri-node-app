@@ -3,7 +3,7 @@ var Twitter = require('twitter');
 var request = require('request');
 var inquirer = require('inquirer');
 var SpotifyWebApi = require('spotify-web-api-node');
-var omdb = require('omdb');
+//var omdb = require('omdb');
 
 var omdb = require('rcb-omdb');
 
@@ -127,13 +127,14 @@ var movieFunction= function(){
 		 }
 	]).then(function (user) {
 		var movieQuery = user.movie || 'Mr. Nobody ';
-		omdb.get({ title: movieQuery,  tomatoes:true}, true, function(err, movie) {
+		omdb.get({ title: movieQuery}, true, function(err, movie) {
 			if(err) {
 		        return console.error(err);
 		    }		 
 		    if(!movie) {
 		        return console.log('Movie not found!');
 		    }
+		    console.log(movie);
 		    var logInfo = 'Movie info -' +  movie.title + ' , '+ movie.year + ' , ' + movie.imdb.rating;
 		    logInfo += 'country - ' + movie.countries;
 		    logInfo +=  'plot - ' + movie.plot;
