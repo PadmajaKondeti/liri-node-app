@@ -30,3 +30,29 @@ Movie info -Mr. Nobody , 2009 , 7.9country - Belgium,Germany,Canada,Franceplot -
 [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
 
 [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+
+Artist(s)- King HarvestSong Name - Dancing In the Moonlight - Original RecordingPreview link -  https://p.scdn.co/mp3-preview/946e8fd229c36c44b597d33aa4c33ac0dd0d368aAlbum -  Dancing In the Moonlight
+
+Movie info -Mr. Nobody , 2009 , 7.9country - Belgium,Germany,Canada,Franceplot - A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.Actors - Jared Leto,Sarah Polley,Diane Kruger,Linh Dan Pham
+
+Movie info -Mr. Nobody , 2009 , 7.9country - Belgium,Germany,Canada,Franceplot - A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.Actors - Jared Leto,Sarah Polley,Diane Kruger,Linh Dan Pham
+
+Artist(s)- AdeleSong Name - Send My Love (To Your New Lover)Preview link -  https://p.scdn.co/mp3-preview/3d8242da4e3491cfcd39d65262a8a235283687fbAlbum -  Send My Love (To Your New Lover)
+
+Artist(s)- Backstreet BoysSong Name - I Want It That WayPreview link -  https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6Album -  The Hits--Chapter One
+
+Artist(s)- Backstreet BoysSong Name - I Want It That WayPreview link -  https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6Album -  The Hits--Chapter One
+
+[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+
+[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+
+Movie info -Mr. Nobody , 2009 , 7.9country - Belgium,Germany,Canada,Franceplot - A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.Actors - Jared Leto,Sarah Polley,Diane Kruger,Linh Dan Pham
+
+Artist(s)- Backstreet BoysSong Name - I Want It That WayPreview link -  https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6Album -  The Hits--Chapter One
+
+Artist(s)- AdeleSong Name - Send My Love (To Your New Lover)Preview link -  https://p.scdn.co/mp3-preview/3d8242da4e3491cfcd39d65262a8a235283687fbAlbum -  Send My Love (To Your New Lover)
+
+Artist(s)- Backstreet BoysSong Name - I Want It That WayPreview link -  https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6Album -  The Hits--Chapter One
+
+Artist(s)- King HarvestSong Name - Dancing In the Moonlight - Original RecordingPreview link -  https://p.scdn.co/mp3-preview/946e8fd229c36c44b597d33aa4c33ac0dd0d368aAlbum -  Dancing In the Moonlight

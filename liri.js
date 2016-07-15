@@ -9,6 +9,10 @@ var omdb = require('rcb-omdb');
 
 var spotify = require('spotify');
 var fs = require('fs');
+//variables - file reading
+var method="", argument="";
+//spotify
+var spotifyQuery ="";
 
 var client = new Twitter({
 	consumer_key: keys.twitterKeys.consumer_key,
@@ -42,7 +46,7 @@ inquirer.prompt([
 	} else if (user.choice == 'movie-this' ){
 		movieFunction();
 	} else if (user.choice == 'do-what-it-says' ){
-		
+		doWhateverFunction();
 
 	}
 });
@@ -84,29 +88,35 @@ var tweetFunction = function(){
 	});	
 };
 var spotifyFunction = function(){
-	inquirer.prompt([
-		{
-			type: "input",
-			message: "Please enter the song name?",
-			name: "spotify"
-		 }
-	]).then(function (user) {
-		var spotifyQuery = user.spotify || 'dancing in the moonlight';
-		spotify.search({ type: 'track', query: spotifyQuery }, function(err, data) {
-			if ( !err ) {
-				// Do something with 'data'
-				var logInfo = "Artist(s)- "  + data.tracks.items[0]['artists'][0]['name'];
-				logInfo += "Song Name - "  + data.tracks.items[0].name;
-				logInfo +=  "Preview link -  "  + data.tracks.items[0].preview_url;
-				logInfo += "Album -  "  + data.tracks.items[0]['album']['name'];
-				logInfoFunction(logInfo);
-				console.log("Artist(s)- "  + data.tracks.items[0]['artists'][0]['name']);
-				console.log("Song Name - "  + data.tracks.items[0].name);
-				console.log("Preview link -  "  + data.tracks.items[0].preview_url);
-				console.log("Album -  "  + data.tracks.items[0]['album']['name']);
-			}
+	if (argument.length >0 ){
+		spotifyQuery = argument;
+		getSpotify();
+	} else {
+		inquirer.prompt([
+			{
+				type: "input",
+				message: "Please enter the song name?",
+				name: "spotify"
+			 }
+		]).then(function (user) {
+			var spotifyQuery = user.spotify || 'dancing in the moonlight';
+			spotify.search({ type: 'track', query: spotifyQuery }, function(err, data) {
+				if ( !err ) {
+					// Do something with 'data'
+					var logInfo = "Artist(s)- "  + data.tracks.items[0]['artists'][0]['name'];
+					logInfo += "Song Name - "  + data.tracks.items[0].name;
+					logInfo +=  "Preview link -  "  + data.tracks.items[0].preview_url;
+					logInfo += "Album -  "  + data.tracks.items[0]['album']['name'];
+					logInfoFunction(logInfo);
+					console.log("Artist(s)- "  + data.tracks.items[0]['artists'][0]['name']);
+					console.log("Song Name - "  + data.tracks.items[0].name);
+					console.log("Preview link -  "  + data.tracks.items[0].preview_url);
+					console.log("Album -  "  + data.tracks.items[0]['album']['name']);
+				}
+			});
 		});	
-	})
+	
+	}
 };
 var movieFunction= function(){
 	inquirer.prompt([
@@ -136,14 +146,51 @@ var movieFunction= function(){
 		    console.log('Actors - ' + movie.actors);
 		    console.log('Rotten Tomatoes Rating - ' + movie.tomato);
 
-		});
+		 });
 	})
+};
+var getSpotify = function(){
+	spotify.search({ type: 'track', query: spotifyQuery }, function(err, data) {
+		console.log(data);
+		if ( !err ) {
+			// Do something with 'data'
+			var logInfo = "Artist(s)- "  + data.tracks.items[0]['artists'][0]['name'];
+			logInfo += "Song Name - "  + data.tracks.items[0].name;
+			logInfo +=  "Preview link -  "  + data.tracks.items[0].preview_url;
+			logInfo += "Album -  "  + data.tracks.items[0]['album']['name'];
+			logInfoFunction(logInfo);
+			console.log("Artist(s)- "  + data.tracks.items[0]['artists'][0]['name']);
+			console.log("Song Name - "  + data.tracks.items[0].name);
+			console.log("Preview link -  "  + data.tracks.items[0].preview_url);
+			console.log("Album -  "  + data.tracks.items[0]['album']['name']);
+		}
+	});
 };
 var doWhateverFunction = function(){
 	// read the file 
-	fs.readFile('random.txt', (err) => {
-		if (err) throw err;
-	}).then(function (obj) {
-		console.log('read the file!');
-	})
+	fs.readFile("random.txt", "utf8", function(error, data) {
+
+		// We will then print the contents of data
+		console.log(data);
+
+		// Then split it by commas (to make it more readable)
+		var dataArr = data.split(',');
+
+		// We will then re-display the content with the split for aesthetics.
+		console.log(dataArr);
+		method = dataArr[0];
+		argument = dataArr[1];
+		switch (dataArr[0]) {
+			case "my-tweets":
+				tweetFunction();
+				break;
+			case "spotify-this-song":
+				spotifyFunction();
+				break;
+			case "movie-this":
+				movieFunction();
+				break;
+		};
+	
+	});
 };
